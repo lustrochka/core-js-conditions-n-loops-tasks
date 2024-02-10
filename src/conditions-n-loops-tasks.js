@@ -407,20 +407,33 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  /* if (arr.length === 0) return [];
-  const min = [];
-  const max = [];
-  const middle = arr[0];
-  for (let i = 1; i < arr.length; i += 1) {
-    if (arr[i] < middle) {
-      min.push(arr[i]);
-    } else {
-      max.push(arr[i]);
-    }
+/* function merge(left, right) {
+  const sorted = [];
+  while (left.length && right.length) {
+    sorted.push(left[0] < right[0] ? left.shift() : right.shift());
   }
-  return sortByAsc(min).concat(middle, sortByAsc(max)); */
-  throw new Error('Not implemented');
+  return [...sorted, ...left, ...right];
+}
+
+function sort(arr) {
+  if (!arr || !arr.length) return null;
+  if (arr.length <= 1) return arr;
+  const left = arr.slice(0, arr.length / 2);
+  const right = arr.slice(arr.length / 2);
+  return merge(sort(left), sort(right));
+} */
+
+function sortByAsc(arr) {
+  const copy = arr;
+  for (let i = 1; i < copy.length; i += 1) {
+    const temp = copy[i];
+    let j = i;
+    while (j > 0 && arr[j - 1] > temp) {
+      copy[j] = arr[j - 1];
+      j -= 1;
+    }
+    copy[j] = temp;
+  }
 }
 
 /**
@@ -482,6 +495,7 @@ function shuffleChar(str, iterations) {
  * @returns {number} The nearest larger number, or original number if none exists.
  */
 function getNearestBigger(number) {
+  console.log(number);
   let arr = [];
   let idx1;
   let n = number;
