@@ -495,7 +495,6 @@ function shuffleChar(str, iterations) {
  * @returns {number} The nearest larger number, or original number if none exists.
  */
 function getNearestBigger(number) {
-  console.log(number);
   let arr = [];
   let idx1;
   let n = number;
